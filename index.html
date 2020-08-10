@@ -149,7 +149,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/10/Twenty-twenty%20Aug.10/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/10/Twenty-twenty%20Aug.10(2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,82 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/10/Twenty-twenty%20Aug.10/" class="post-title-link" itemprop="url">日更</a>
+            <a href="/2020/08/10/Twenty-twenty%20Aug.10(2)/" class="post-title-link" itemprop="url">我又来了！</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-08-10 21:56:02" itemprop="dateCreated datePublished" datetime="2020-08-10T21:56:02+08:00">2020-08-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>经过一天的研究，我又学到了怎样添加更加高级的看板娘！下面我来详细介绍一哈。</p>
+<h2 id="终极–互动看板娘"><a href="#终极–互动看板娘" class="headerlink" title="终极–互动看板娘"></a>终极–互动看板娘</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>下载<a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget">大神的文件</a>并解压到本地博客目录的themes/next/source下，修改autoload.js文件。</p>
+<p>将</p>
+<pre><code>const live2d_path = &quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/&quot;;</code></pre>
+<p>改为</p>
+<pre><code>const live2d_path = &quot;/live2d/&quot;;</code></pre>
+<p>autoload.js中的注释的绝对地址指的是，将资源打包放到hexo/theme/next/source中后，以hexo/theme/next/source为根目录（/）的绝对路径，一般我们下载下来的是master分支，那么修改路径就是/live2d-widget-master/xxx.js，autoload.js的最后一个函数initWidget(“/live2d-widget-master/“, “<a target="_blank" rel="noopener" href="https://api.fghrsh.net/live2d%E2%80%9D);%E4%B8%AD%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%8F%82%E6%95%B0%E4%B8%8D%E8%A6%81%E5%8F%98%EF%BC%8C%E6%98%AF%E4%B8%80%E4%B8%AA%E5%90%8E%E5%8F%B0api%E3%80%82%E6%88%91%E9%80%89%E6%8B%A9%E5%B0%86%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%BA%E2%80%9Clive2d%E2%80%9D%EF%BC%8C%E5%9B%A0%E6%AD%A4%E6%8C%89%E7%85%A7%E5%A6%82%E4%B8%8A%E6%96%B9%E5%BC%8F%E4%BF%AE%E6%94%B9%E3%80%82">https://api.fghrsh.net/live2d”);中的第二个参数不要变，是一个后台api。我选择将文件夹重命名为“live2d”，因此按照如上方式修改。</a></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>在/themes/next/layout/_layout.swing中,<body>标签中新增如下内容，########为你自己的github账号：</p>
+<pre><code>&lt;script src=&quot;https://########.github.io/live2d/autoload.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p><strong><head>标签中新增如下内容：一定一定要加上依赖！！！！！</strong></p>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;/&gt;</code></pre>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>在<strong>主题配置文件_config.yml</strong>中,新增如下内容：</p>
+<pre><code>live2d:
+  enable: true</code></pre>
+<p><em>想修改看板娘大小、位置、格式、文本内容等，可查看并修改 waifu-tips.js 、 waifu-tips.json 和 waifu.css。</em></p>
+<p>最终的效果在我的博客就能看到啦！</p>
+<p>（转自<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39610915/article/details/90679768?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.opensearch_close&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.opensearch_close">CSDN上大神的博客</a>）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/10/Twenty-twenty%20Aug.10(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hi HJC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/10/Twenty-twenty%20Aug.10(1)/" class="post-title-link" itemprop="url">日更</a>
         </h2>
 
         <div class="post-meta">
@@ -433,7 +508,7 @@ mobile:
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
