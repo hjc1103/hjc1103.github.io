@@ -1,174 +1,37 @@
-<!DOCTYPE html>
-<html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="John Doe">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="日更"/>
-  <meta property="og:description" content="" />
-  <meta property="og:site_name" content="Hexo"/>
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="http://yoursite.com"/>
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-
-  <!-- Site Title -->
-  <title>Hexo</title>
-
-  <!-- Bootstrap CSS -->
-  
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
-  <!-- Custom CSS -->
-  
-  
-<link rel="stylesheet" href="/css/style.light.css">
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-  <!-- Google Analytics -->
-  
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-<meta name="generator" content="Hexo 5.0.0"></head>
-
-  <body>
-    <!-- Page Header -->
+{% block page_class %}page-post-detail{% endblock %}
 
 
-<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">日更</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/<your-github-username>">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:<your-email-address>">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
+{% block content %}
+
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
+
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
-</header>
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By John Doe</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2020-08-10</span>
-            <span class="time">11:34:33</span>
-          </span>
-          
-        </div>
-        <!-- Tags -->
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <p>今天来试验一下看板娘功能！</p>
-<h2 id="看板娘"><a href="#看板娘" class="headerlink" title="看板娘"></a>看板娘</h2><h3 id="首先，用如下的命令添加一个live2d"><a href="#首先，用如下的命令添加一个live2d" class="headerlink" title="首先，用如下的命令添加一个live2d"></a>首先，用如下的命令添加一个live2d</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+{% endblock %}
 
-<h3 id="输入以下的命令，下载相应的模型"><a href="#输入以下的命令，下载相应的模型" class="headerlink" title="输入以下的命令，下载相应的模型"></a>输入以下的命令，下载相应的模型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install 模型名</span><br></pre></td></tr></table></figure>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-<p>模型名称选择请<a target="_blank" rel="noopener" href="https://github.com/xiazeyu/live2d-widget-models">单击此处</a>各个模型的预览请<a target="_blank" rel="noopener" href="https://huaji8.top/post/live2d-plugin-2.0/">访问原作者的博客</a></p>
-<h3 id="打开站点目录下的-config-yml文件，输入以下代码"><a href="#打开站点目录下的-config-yml文件，输入以下代码" class="headerlink" title="打开站点目录下的_config.yml文件，输入以下代码"></a>打开站点目录下的<strong>_config.yml</strong>文件，输入以下代码</h3><pre><code>live2d:
-enable: true
-scriptFrom: local
-model: 
-    use: live2d-widget-model-haruto #模型选择
-display: 
-    position: right  #模型位置
-    width: 150       #模型宽度
-    height: 300      #模型高度
-mobile: 
-    show: true      #是否在手机端显示</code></pre>
-<p>设置好之后我们便拥有了一个卡通人物<img src="https://i.loli.net/2020/08/10/7hx1UcMnVLt3l6f.png" alt="dw"></p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
-          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-    <!-- After Footer Scripts -->
-
-<script src="/js/highlight.pack.js"></script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
-  });
-</script>
-
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-miku"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-</html>
-
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}
